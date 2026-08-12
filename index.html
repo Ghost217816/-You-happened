@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ти трапилась — Rose</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <section id="startScreen" class="start-screen">
+      <div class="start-glow"></div>
+      <div class="start-content">
+        <div class="mini-rose">✿</div>
+        <p class="eyebrow">для тебе Насть</p>
+        <h1>Ты случилась</h1>
+        <p class="sub">Натисни, щоб почати</p>
+        <button id="startBtn">ПОЧАТИ</button>
+      </div>
+    </section>
+
+    <section id="headphoneScreen" class="headphone-screen" aria-hidden="true">
+      <div class="headphone-glow"></div>
+      <div class="headphone-content">
+        <div class="headphone-icon" aria-hidden="true">🎧</div>
+        <p class="eyebrow">перед початком</p>
+        <h2>Одягни навушники</h2>
+        <p class="headphone-sub">Для найкращого звучання слухай цю історію в навушниках.</p>
+        <button id="confirmHeadphonesBtn">Я ОДЯГНУЛА НАВУШНИКИ</button>
+      </div>
+    </section>
+
+    <section id="scene" class="scene" aria-hidden="true">
+      <div class="grain"></div>
+      <div class="moon-glow"></div>
+      <div id="particles"></div>
+
+      <div class="lyrics" id="lyrics"></div>
+
+      <div class="rose-wrap" id="roseWrap">
+        <svg class="rose" viewBox="0 0 400 650" role="img" aria-label="Розкішна червона троянда">
+  <defs>
+    <radialGradient id="budGrad" cx="38%" cy="25%">
+      <stop offset="0" stop-color="#ff9aae"/>
+      <stop offset=".22" stop-color="#ff4869"/>
+      <stop offset=".58" stop-color="#c3133e"/>
+      <stop offset="1" stop-color="#4c0318"/>
+    </radialGradient>
+    <linearGradient id="petalLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff8ca0"/>
+      <stop offset=".42" stop-color="#e72b50"/>
+      <stop offset="1" stop-color="#75051f"/>
+    </linearGradient>
+    <linearGradient id="stemGrad" x1="0" x2="1">
+      <stop offset="0" stop-color="#06351d"/>
+      <stop offset=".45" stop-color="#28a255"/>
+      <stop offset=".7" stop-color="#65c979"/>
+      <stop offset="1" stop-color="#052b18"/>
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3dbb67"/>
+      <stop offset=".5" stop-color="#13733c"/>
+      <stop offset="1" stop-color="#06351e"/>
+    </linearGradient>
+    <filter id="softGlow"><feGaussianBlur stdDeviation="11"/></filter>
+    <filter id="petalShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#22000b" flood-opacity=".65"/>
+    </filter>
+  </defs>
+
+  <ellipse class="rose-shadow" cx="200" cy="620" rx="78" ry="15"/>
+
+  <g class="stem-group">
+    <path class="stem-glow" d="M200 610 C198 545 207 476 201 408 C198 372 201 342 200 310"/>
+    <path class="stem" d="M200 610 C198 545 207 476 201 408 C198 372 201 342 200 310"/>
+    <path class="thorn" d="M198 510 l-19 -9 l18 -2z"/>
+    <path class="thorn" d="M203 452 l20 -9 l-18 -2z"/>
+    <path class="thorn" d="M200 390 l-17 -8 l16 -3z"/>
+  </g>
+
+  <g class="leaf leaf-left">
+    <path d="M199 485 C151 444 100 452 73 493 C118 510 165 505 199 485Z"/>
+    <path class="leaf-vein" d="M190 483 C150 481 117 487 86 493"/>
+    <path class="leaf-vein" d="M151 481 l-15 -18 M135 487 l-18 -12 M166 483 l-8 -20"/>
+  </g>
+  <g class="leaf leaf-right">
+    <path d="M202 428 C248 386 294 396 319 435 C274 451 235 448 202 428Z"/>
+    <path class="leaf-vein" d="M210 428 C249 428 280 431 307 435"/>
+    <path class="leaf-vein" d="M250 429 l14 -18 M268 431 l18 -12 M235 428 l7 -20"/>
+  </g>
+
+  <g class="sepals">
+    <path d="M158 286 L138 270 L169 273 L185 247 L198 273 L218 248 L221 276 L253 269 L235 291Z"/>
+  </g>
+
+  <g class="bud-glow"><circle cx="200" cy="276" r="100"/></g>
+
+  <g class="flower" filter="url(#petalShadow)">
+    <path class="petal back" d="M141 291 C109 243 124 181 174 160 C166 205 179 239 200 262 C176 258 155 269 141 291Z"/>
+    <path class="petal back" d="M259 291 C291 243 276 181 226 160 C234 205 221 239 200 262 C224 258 245 269 259 291Z"/>
+    <path class="petal back" d="M153 238 C143 184 174 133 215 145 C203 184 214 218 239 245 C211 225 179 224 153 238Z"/>
+    <path class="petal back" d="M247 238 C257 184 226 133 185 145 C197 184 186 218 161 245 C189 225 221 224 247 238Z"/>
+
+    <path class="petal main" d="M200 321 C143 316 111 279 122 231 C132 188 168 163 200 178 C232 163 268 188 278 231 C289 279 257 316 200 321Z"/>
+    <path class="petal side" d="M151 300 C119 277 119 236 143 209 C160 190 181 185 200 196 C175 212 165 240 171 265 C174 280 166 292 151 300Z"/>
+    <path class="petal side" d="M249 300 C281 277 281 236 257 209 C240 190 219 185 200 196 C225 212 235 240 229 265 C226 280 234 292 249 300Z"/>
+
+    <path class="petal inner" d="M200 305 C163 303 141 278 148 244 C154 215 179 194 200 205 C221 194 246 215 252 244 C259 278 237 303 200 305Z"/>
+    <path class="petal inner2" d="M200 292 C176 290 161 274 166 250 C170 230 186 216 200 223 C214 216 230 230 234 250 C239 274 224 290 200 292Z"/>
+    <path class="petal curl" d="M200 279 C184 278 176 266 180 251 C184 236 195 228 204 235 C216 244 219 257 213 268 C210 274 205 278 200 279Z"/>
+    <path class="petal curl2" d="M202 265 C195 264 191 258 193 251 C195 245 201 242 206 246 C211 251 211 257 208 262 C206 265 204 266 202 265Z"/>
+    <path class="petal highlight" d="M151 238 C158 204 180 181 201 182 C181 196 171 215 171 239 C164 237 157 237 151 238Z"/>
+    <ellipse class="dew" cx="176" cy="205" rx="3.5" ry="5"/>
+    <ellipse class="dew" cx="237" cy="232" rx="2.5" ry="3.5"/>
+  </g>
+</svg>
+      </div>
+
+      <div id="finalOutro" class="final-outro" aria-hidden="true">
+        <div id="erose">
+          <div id="the-glass">
+            <div class="glass-nipple"></div>
+            <div id="dead">
+              <div class="deadpetal"></div>
+              <div class="deadpetal"></div>
+              <div class="deadpetal"></div>
+              <div class="deadpetal"></div>
+              <div class="deadpetal animated"></div>
+            </div>
+            <div id="the-rose">
+              <div class="final-stem stem-1"></div>
+              <div class="final-stem stem-2"></div>
+              <div class="petals">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="stem-clit right"></div>
+                <div class="stem-clit left"></div>
+              </div>
+            </div>
+            <div id="halo"></div>
+          </div>
+          <p>Tale as old as fuck<br>True as fuck can be</p>
+        </div>
+      </div>
+
+      <div class="song-ui">
+        <div class="track-title">мартин — ты случилась</div>
+        <div class="progress"><span id="progressBar"></span></div>
+        <div class="time"><span id="currentTime">0:00</span><span id="duration">2:21</span></div>
+        <button id="restartBtn" title="Почати спочатку">↻</button>
+      </div>
+
+      <audio id="audio" preload="auto">
+        <source src="song.mp3" type="audio/mpeg">
+      </audio>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
